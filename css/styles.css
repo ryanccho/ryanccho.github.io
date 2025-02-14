@@ -7,6 +7,7 @@ body {
 	margin: 0;
     font-family: "Pixelify Sans", serif;
     font-size: 32px;
+    color:#323232;
     background-color: #FFC97C;
 }
 
@@ -18,6 +19,7 @@ img {
 button {
     font-family: "Pixelify Sans", serif;
     font-size: 0.75em;
+    color:#323232;
     border: none;
     border-radius: 80px;
     margin: 0.5em 0;
