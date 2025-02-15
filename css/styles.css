@@ -36,11 +36,26 @@ img {
     height: auto;
 }
 
+input {
+    font-family: "Pixelify Sans", serif;
+    font-size: 0.75em;
+    color:#323232;
+    border: none;
+    border-radius: 80px;
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+}
+
 #image_container {
     height: 50dvh;
     display: flex;
     justify-content: center;
     align-items: end;
+}
+
+#scene{
+    display: none;
+    width: 7em;
 }
 
 #content_container {
@@ -60,6 +75,10 @@ img {
     justify-content: flex-end;
 }
 
-.duck{
-    width: 7em;
+#dialogue {
+    display: none;
+}
+
+#bottom_button {
+    display: none;
 }
