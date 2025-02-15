@@ -93,11 +93,11 @@ const advance = () => {
     console.log("Panel: ", panelIndex, currentPanel);
     
     // buttonless panels
-    if (panelIndex === 0 || panelIndex === 7 || panelIndex === 14) document.body.addEventListener("click", advance);
+    if (panelIndex === 0 || panelIndex === 7) document.body.addEventListener("click", advance);
     else document.body.removeEventListener("click", advance);
 
     // timed panels
-    if (panelIndex === 8 || panelIndex === 9) setTimeout(advance, 2500);
+    if (panelIndex === 8 || panelIndex === 9 || panelIndex === 14) setTimeout(advance, 2500);
 
     // image
     const image = document.getElementById("scene")
