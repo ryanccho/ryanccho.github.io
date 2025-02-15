@@ -66,7 +66,6 @@ input {
     align-items: center;
     margin: 0 auto;
     padding: 0 1em;
-    overflow: hidden;
 }
 
 .section {
@@ -79,6 +78,32 @@ input {
     display: none;
 }
 
+.highlight {
+    color: #FF1C4D;
+}
+
 #bottom_button {
     display: none;
+}
+
+#letter_button {
+    display: none;
+    width: 5em;
+}
+
+#card {
+    background-color: #FFDAC0;
+    border: 5px solid #323232;
+    border-radius: 40px;
+    margin: 1em;
+    padding: 1em;
+}
+
+#heart {
+    display: flex;
+    justify-content: center;
+}
+
+#heart img {
+    width: 2em;
 }
