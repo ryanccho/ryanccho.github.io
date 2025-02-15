@@ -1,90 +1,113 @@
-let inputName = "";
-
-// Panels
+let username = "";
 const panels = [
     {
-        dialogue: "Tap/click anywhere to begin"
+        dialogue: `<h1>Tap/click anywhere to begin</h1>`
     },
     {
-        image: "duck",
-        dialogue: "Why hello there! It's a wonderful day today isn't it?",
-        top_button: "yes!",
-        bottom_button: "sure is!"
+        image: "imgs/duck.png",
+        dialogue: `<h1>Why hello there! It's a wonderful day today isn't it?</h1>`,
+        buttons: [
+            { type: "button", value: "yes!" },
+            { type: "button", value: "sure is!" }
+        ]
     },
     {
-        image: "duck",
-        special_dialogue: `<h1>Ah yes, there is a magical feeling of <span class="highlight">love</span> in the air. It must be a special day today!</h1>`,
-        top_button: "it's valentines day!",
-        bottom_button: "oh really? i didn't notice"
+        image: "imgs/duck.png",
+        dialogue: `<h1>Ah yes, there is a magical feeling of <span class="highlight">love</span> in the air. It must be a special day today!</h1>`,
+        buttons: [
+            { type: "button", value: "it's valentines day!" },
+            { type: "button", value: "oh really? i didn't notice" }
+        ]
     },
     {
-        image: "duck",
-        special_dialogue: `<h1>Oh that's right! Silly me, how could i forget? It's <span class="highlight">Valentine's Day</span>, after all!</h1>`,
-        top_button: "uh huh",
-        bottom_button: "you're a silly duck"
+        image: "imgs/duck.png",
+        dialogue: `<h1>Oh that's right! Silly me, how could i forget? It's <span class="highlight">Valentine's Day</span>, after all!</h1>`,
+        buttons: [
+            { type: "button", value: "uh huh" },
+            { type: "button", value: "you're a silly duck" }
+        ]
     },
     {
-        image: "duck",
-        special_dialogue: `<h1>Well miss, have you received your <span class="highlight">Valentine</span> this year?</h1>`,
-        top_button: "no",
-        bottom_button: "my boyfriend forgot it's valentine's day"
+        image: "imgs/duck.png",
+        dialogue: `<h1>Well miss, have you received your <span class="highlight">Valentine</span> this year?</h1>`,
+        buttons: [
+            { type: "button", value: "no" },
+            { type: "button", value: "my boyfriend forgot it's valentine's day" }
+        ]
     },
     {
-        image: "surprised_duck",
-        special_dialogue: `<h1>What?! That can't be right. Surely someone has sent you a <span class="highlight">Valentine</span>!</h1>`,
-        top_button: "nope",
-        bottom_button: "nuh uh"
+        image: "imgs/surprised_duck.png",
+        dialogue: `<h1>What?! That can't be right. Surely someone has sent you a <span class="highlight">Valentine</span>!</h1>`,
+        buttons: [
+            { type: "button", value: "nope" },
+            { type: "button", value: "nuh uh" }
+        ]
     },
     {
-        image: "duck",
-        dialogue: "Maybe I have a letter for you here in my bag. What's your name, miss?",
+        image: "imgs/duck.png",
+        dialogue: `<h1>Maybe I have a letter for you here in my bag. What's your name, miss?</h1>`,
         input: true
     },
     {
-        image: "duck",
-        special_dialogue: `<h1>Nice to meet you, miss <span id="inputted_name" class="highlight"></span>. Let's see here...</h1>`,
-        inputted_name: true
+        image: "imgs/duck.png",
+        dialogue: `<h1>Nice to meet you, miss <span id="insert_name" class="highlight"></span>. Let's see here...</h1>`,
+        insertName: true
     },
     {
-        image: "duck",
-        dialogue: "..."
+        image: "imgs/duck.png",
+        dialogue: `<h1>...</h1>`
     },
     {
-        image: "duck",
-        dialogue: "... ... ..."
+        image: "imgs/duck.png",
+        dialogue: `<h1>... ... ...<h1>`
     },
     {
-        image: "duck",
-        special_dialogue: `<h1>Ah yes! Here we are! A letter for you, miss <span id="inputted_name" class="highlight"></span>!</h1>`,
-        inputted_name: true,
-        letter_button: true
+        image: "imgs/duck.png",
+        dialogue: `<h1>Ah yes! Here we are! A letter for you, miss <span id="insert_name" class="highlight"></span>!</h1>`,
+        insertName: true,
+        buttons: [
+            { type: "div", value: `<img id="letter_button" src=imgs/letter.png>` }
+        ]
     },
     {
-        letter: true,
-        top_button: "close"
+        card: true,
+        buttons: [
+            { type: "button", value: "close" }
+        ]
     },
     {
-        image: "duck",
-        special_dialogue: `<h1>I knew someone as wonderful as you would have a <span class="highlight">Valentine</span>! Looks like it came just in time!</h1>`,
-        top_button: "thank you mr. duck!"
+        image: "imgs/duck.png",
+        dialogue: `<h1>I knew someone as wonderful as you would have a <span class="highlight">Valentine</span>! Looks like it came just in time!</h1>`,
+        buttons: [
+            { type: "button", value: "thank you mr. duck!" },
+            { type: "button", value: "yayyyy" }
+        ]
     },
     {
-        image: "duck",
-        special_dialogue: `<h1>Well I better be off, lots more <span class="highlight">Valentines</span> to deliver today! After while!</h1>`,
-        top_button: "bye bye!",
-        bottom_button: "in awhile!"
+        image: "imgs/duck.png",
+        dialogue: `<h1>Well I better be off, lots more <span class="highlight">Valentines</span> to deliver today! After while!</h1>`,
+        buttons: [
+            { type: "button", value: "bye bye!" },
+            { type: "button", value: "in awhile!" }
+        ]
     },
     {
-        image: "poof",
-        dialogue: "(Mr. Duck zooms off)"
+        image: "imgs/poof.png",
+        dialogue: `<h1>(Mr. Duck zooms off)</h1>`
     },
     {
-        image: "letter",
-        dialogue: "the end."
+        image: "imgs/letter.png",
+        dialogue: `<h1>the end.</h1>`
     }
 ];
-
 let panelIndex = -1;
+
+// helper function to update elements
+const updateElement = (elementID, value, property) => {
+    const element = document.getElementById(elementID);
+    element.style.display = value ? "block" : "none";
+    if (value && property) element[property] = value;
+}
 
 // advance a panel
 const advance = () => {
@@ -92,7 +115,7 @@ const advance = () => {
     const currentPanel = panels[panelIndex];
     console.log("Panel: ", panelIndex, currentPanel);
     
-    // buttonless panels
+    // buttonless panel
     if (panelIndex === 0) document.body.addEventListener("click", advance);
     else document.body.removeEventListener("click", advance);
 
@@ -100,85 +123,47 @@ const advance = () => {
     if (panelIndex === 7 || panelIndex === 8 || panelIndex === 9 || panelIndex === 14) setTimeout(advance, 2500);
 
     // image
-    const image = document.getElementById("scene")
-    if (currentPanel.image) {
-        image.style.display = "block";
-        image.src = `imgs/${currentPanel.image}.png`;
-    } else image.style.display = "none";
+    updateElement("image", currentPanel.image, "src");
 
     // dialogue
-    const dialogue = document.getElementById("dialogue");
-    if (currentPanel.dialogue) {
-        dialogue.style.display = "block";
-        dialogue.innerHTML = `<h1>${currentPanel.dialogue}</h1>`;
-    } else if (currentPanel.special_dialogue) {
-        dialogue.style.display = "block";
-        dialogue.innerHTML = currentPanel.special_dialogue;
-        if (currentPanel.inputted_name) document.getElementById("inputted_name").innerHTML = inputName;
-    }
-    else dialogue.style.display = "none";
+    updateElement("dialogue", currentPanel.dialogue, "innerHTML");
+    if (currentPanel.insertName) document.getElementById("insert_name").innerText = username;
 
     // buttons
-    const topButton = document.getElementById("top_button");
-    if (currentPanel.top_button) topButton.style.display = "block";
-    else topButton.style.display = "none";
-    topButton.innerText = currentPanel.top_button;
-    
-    const bottomButton = document.getElementById("bottom_button");
-    if (currentPanel.bottom_button) bottomButton.style.display = "block";
-    else bottomButton.style.display = "none";
-    bottomButton.innerText = currentPanel.bottom_button;
+    const buttons = document.getElementById("buttons");
+    buttons.innerHTML = "";
+    if (currentPanel.buttons) {
+        currentPanel.buttons.forEach((button, index) => {
+            const buttonElement = document.createElement(button.type);
+            buttonElement.id = `button${index+1}`;
+            buttonElement.innerHTML = button.value;
+            buttonElement.addEventListener("click", advance);
+            buttons.appendChild(buttonElement);
+        });
+    }
 
     // input
-    const input = document.getElementById("input");
-    if (currentPanel.input) {
-        input.style.display = "block";
-        const inputText = document.createElement("div");
-        inputText.innerHTML = `<input type="text" placeholder="Name" id="name_input">`;
-        input.prepend(inputText);
-        inputText.addEventListener("keydown", event => {
-            const nameInput = document.getElementById("name_input");
-            if (event.key === "Enter" && nameInput.value) {
-                inputName = nameInput.value;
-                advance();
-            }
-        });
-    } else input.style.display = "none";
-
-    // letter button
-    const letterButton = document.getElementById("letter_button");
-    if (currentPanel.letter_button) letterButton.style.display = "block";
-    else letterButton.style.display = "none";
+    updateElement("input", currentPanel.input);
 
     // card
-    const cardContainer = document.getElementById("card_container");
-    if (currentPanel.letter) {
-        cardContainer.style.display = "block";
-        cardContainer.innerHTML = `<div id="card">
-        <div id="heart"><img src="imgs/heart.png"></div>
-        <p>
-        My dearest ${inputName},
-        <br><br>
-        Happy Valentines Dayyy!!! Hehehe I can't believe this is already our second Valentine's Day together! Whether it's a special day like this or just another Tuesday, I celebrate and cherish each and every moment I get with you because I'm just so blessed to have met you and to have the opportunity to build a love as wonderful as ours. You have single-handedly and wholly changed my life for the better, and I can only hope that I've done the same for you. Looking forward to many more days of eating at silly restaurants, going on adventures, solving magic puzzles, playing biscuitball, and celebrating Valentines. I love you from our Minecraft world and back (that's really far). Happy 2nd Valentine's to buggemses!!!
-        <br><br>
-        wiggles and giggles,<br>
-        bug
-        <br><br>
-        P.S. willlll youuuu bee my valentinneeee??
-        </p>
-        </div>`;
-        document.getElementById("image_container").style.display = "none";
-    } else {
-        cardContainer.style.display = "none";
-        document.getElementById("image_container").style.display = "flex";
-    }
+    updateElement("card", currentPanel.card);
+    document.getElementById("card_name").innerText = username;
+    if (currentPanel.card) document.getElementById("image_container").style.display = "none";
+    else document.getElementById("image_container").style.display = "flex";
 }
 
+// page load
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Page loaded");
+    document.body.style.display = "block";
     advance();
 });
 
-document.getElementById("top_button").addEventListener("click", advance);
-document.getElementById("bottom_button").addEventListener("click", advance);
-document.getElementById("letter_button").addEventListener("click", advance);
+// input
+const usernameInput = document.getElementById("username_input");
+usernameInput.addEventListener("keydown", event => {
+    if (event.key === "Enter" && usernameInput.value) {
+        username = usernameInput.value;
+        advance();
+    }
+});

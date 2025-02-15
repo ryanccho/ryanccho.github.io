@@ -4,11 +4,12 @@
 }
 
 body {
-	margin: 0;
+    display: none;
     font-family: "Pixelify Sans", serif;
     font-size: 32px;
     color:#323232;
     background-color: #FFC97C;
+	margin: 0;
 }
 
 h1 {
@@ -31,6 +32,11 @@ button {
     padding: 0.5em 1em;
 }
 
+button:hover {
+    background-color: #FFE8C9;
+    cursor: pointer;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -46,49 +52,14 @@ input {
     padding: 0.5em 1em;
 }
 
-#image_container {
-    height: 50dvh;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-}
-
-#scene{
-    display: none;
-    width: 7em;
-}
-
-#content_container {
-    height: 50dvh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0 1em;
+.highlight {
+    color: #FF1C4D;
 }
 
 .section {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
-
-#dialogue {
-    display: none;
-}
-
-.highlight {
-    color: #FF1C4D;
-}
-
-#bottom_button {
-    display: none;
-}
-
-#letter_button {
-    display: none;
-    width: 5em;
 }
 
 #card {
@@ -106,4 +77,33 @@ input {
 
 #heart img {
     width: 2em;
+}
+
+#image_container {
+    height: 50dvh;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+#image {
+    width: 7em;
+}
+
+#content_container {
+    height: 50dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+#letter_button {
+    width: 5em;
+}
+
+#letter_button:hover {
+    cursor: pointer;
 }
